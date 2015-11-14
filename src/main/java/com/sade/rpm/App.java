@@ -1,12 +1,11 @@
 package com.sade.rpm;
 
-import com.sade.db.FileDb;
-import com.sade.rpm.dao.RpmDao;
+import com.sade.model.EmployeeEntity;
 import com.sade.rpm.domain.Company;
 import com.sade.rpm.domain.Employee;
 import com.sade.rpm.domain.Project;
-import com.sade.rpm.service.RpmService;
 import com.sade.rpm.service.SadeRpmService;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Hello world!
@@ -15,18 +14,19 @@ import com.sade.rpm.service.SadeRpmService;
 public class App
 {
 
-
-
     public static void main(String[] args) {
 
 
-        SadeRpmService service = new RpmService(new RpmDao(new FileDb()));
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        service.insertProject(getNewProject());
+        SadeRpmService rpmService = (SadeRpmService) context.getBean("rpmService");
 
-        service.insertCompany(getCompany());
+        rpmService.insertEmployee(getEmployee());
 
-        service.insertEmployee(getEmployee());
+
+        for (EmployeeEntity employeeEntity : rpmService.getAll()) {
+            System.out.println(employeeEntity.getEmployeeId() + employeeEntity.getEmployeeName());
+        }
 
 
     }
@@ -49,8 +49,7 @@ public class App
 
     public static Employee getEmployee() {
         Employee employee = new Employee();
-        employee.setEmployeeId(6546456);
-        employee.setEmployeeName("ferhat");
+        employee.setEmployeeName("erdas");
         return employee;
     }
 }

@@ -3,14 +3,14 @@ package com.sade.rpm.domain;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
-    private Integer employeeId;
+    private Long employeeId;
     private String employeeName;
 
-    public Integer getEmployeeId() {
+    public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Integer employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 

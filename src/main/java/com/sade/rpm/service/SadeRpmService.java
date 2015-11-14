@@ -1,14 +1,19 @@
 package com.sade.rpm.service;
 
+import com.sade.model.EmployeeEntity;
 import com.sade.rpm.domain.Company;
 import com.sade.rpm.domain.Employee;
 import com.sade.rpm.domain.Project;
 
+import java.util.List;
+
 public interface SadeRpmService {
 
-    public void insertProject(Project project);
+    public Project insertProject(Project project);
 
-    void insertCompany(Company company);
+    public Company insertCompany(Company company);
 
-    void insertEmployee(Employee employee);
+    public Employee insertEmployee(Employee employee);
+
+    public List<EmployeeEntity> getAll();
 }

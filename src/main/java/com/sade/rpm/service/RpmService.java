@@ -1,13 +1,17 @@
 package com.sade.rpm.service;
 
+import com.sade.model.EmployeeEntity;
 import com.sade.rpm.domain.Company;
 import com.sade.rpm.domain.Employee;
 import com.sade.rpm.domain.Project;
 import com.sade.rpm.repository.RpmRepository;
 
+import java.util.List;
+
 public class RpmService implements SadeRpmService {
 
-    private final RpmRepository rpmRepository;
+    private  RpmRepository rpmRepository;
+
 
     public RpmService (RpmRepository rpmRepository) {
 
@@ -16,17 +20,22 @@ public class RpmService implements SadeRpmService {
     }
 
     @Override
-    public void insertProject(Project project) {
-        rpmRepository.insertProject(project);
+    public Project insertProject(Project project) {
+        return rpmRepository.insertProject(project);
     }
 
     @Override
-    public void insertCompany(Company company) {
-        rpmRepository.insertCompany(company);
+    public Company insertCompany(Company company) {
+        return rpmRepository.insertCompany(company);
     }
 
     @Override
-    public void insertEmployee(Employee employee) {
-        rpmRepository.insertEmployee(employee);
+    public Employee insertEmployee(Employee employee) {
+        return rpmRepository.insertEmployee(employee);
+    }
+
+    @Override
+    public List<EmployeeEntity> getAll() {
+        return rpmRepository.getAll();
     }
 }
