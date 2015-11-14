@@ -1,4 +1,4 @@
-package com.sade.model;
+package com.sade.rpm.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +31,6 @@ public class EmployeeEntity {
 
     @Override
     public String toString() {
-        return "Person [id=" + employeeId + ", employeeName=" + employeeName + "]";
+        return "Employee [id=" + employeeId + ", employeeName=" + employeeName + "]";
     }
 }

@@ -17,8 +17,10 @@
     </bean>
 
     <bean id="rpmDao" class="com.sade.rpm.dao.RpmDao" >
-
+        <constructor-arg ref="hsqlDb" />
     </bean>
+
+    <bean id="hsqlDb" class="com.sade.rpm.db.HsqlDb" />
 
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">

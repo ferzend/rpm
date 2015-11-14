@@ -1,12 +1,12 @@
-package com.sade.db;
+package com.sade.rpm.db;
 
-import com.sade.model.EmployeeEntity;
+import com.sade.rpm.model.EmployeeEntity;
 import com.sade.rpm.domain.Company;
-import com.sade.rpm.domain.Employee;
 import com.sade.rpm.domain.Project;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 public class HsqlDb implements RpmDb {
 
@@ -24,13 +24,14 @@ public class HsqlDb implements RpmDb {
     }
 
     @Override
-    public void insertEmployee(Employee employee) {
-        EmployeeEntity employeeEntity = new EmployeeEntity();
+    public void insertEmployee(EmployeeEntity employee) {
 
-        employeeEntity.setEmployeeName(employee.getEmployeeName());
+        em.persist(employee);
 
-        em.persist(employeeEntity);
+    }
 
-        System.out.println(employee.getEmployeeName() +" çalışanı eklendi" );
+    @Override
+    public List<EmployeeEntity> getAll() {
+        return em.createQuery("SELECT e FROM EmployeeEntity e", EmployeeEntity.class).getResultList();
     }
 }

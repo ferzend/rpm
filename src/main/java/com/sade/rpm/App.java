@@ -1,6 +1,6 @@
 package com.sade.rpm;
 
-import com.sade.model.EmployeeEntity;
+import com.sade.rpm.model.EmployeeEntity;
 import com.sade.rpm.domain.Company;
 import com.sade.rpm.domain.Employee;
 import com.sade.rpm.domain.Project;
@@ -25,7 +25,7 @@ public class App
 
 
         for (EmployeeEntity employeeEntity : rpmService.getAll()) {
-            System.out.println(employeeEntity.getEmployeeId() + employeeEntity.getEmployeeName());
+            System.out.println(employeeEntity);
         }
 
 

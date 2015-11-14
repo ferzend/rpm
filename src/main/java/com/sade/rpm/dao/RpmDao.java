@@ -1,29 +1,26 @@
 package com.sade.rpm.dao;
 
-import com.sade.db.RpmDb;
-import com.sade.model.EmployeeEntity;
+import com.sade.rpm.converter.FromDomainToEntityConverter;
+import com.sade.rpm.db.RpmDb;
+import com.sade.rpm.model.EmployeeEntity;
 import com.sade.rpm.domain.Company;
 import com.sade.rpm.domain.Employee;
 import com.sade.rpm.domain.Project;
 import com.sade.rpm.repository.RpmRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Transactional
 public class RpmDao implements RpmRepository {
 
-    @PersistenceContext
-    private EntityManager em;
 
     private RpmDb rpmDb;
-
-    public RpmDao() {}
+    FromDomainToEntityConverter converter;
 
     public RpmDao(RpmDb rpmDb) {
         this.rpmDb = rpmDb;
+        converter = new FromDomainToEntityConverter();
     }
 
     @Override
@@ -42,21 +39,16 @@ public class RpmDao implements RpmRepository {
 
     @Override
     public Employee insertEmployee(Employee employee) {
-        EmployeeEntity employeeEntity = new EmployeeEntity();
 
-        employeeEntity.setEmployeeName(employee.getEmployeeName());
-
-        em.persist(employeeEntity);
-
-
-        System.out.println(employee.getEmployeeName() +" çalışanı eklendi" );
+        rpmDb.insertEmployee(converter.convert(employee));
 
         return employee;
     }
 
     @Override
     public List<EmployeeEntity> getAll() {
-        return em.createQuery("SELECT e FROM EmployeeEntity e", EmployeeEntity.class).getResultList();
+        return rpmDb.getAll();
+
     }
 
 

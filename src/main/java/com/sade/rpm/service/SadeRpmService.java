@@ -1,6 +1,6 @@
 package com.sade.rpm.service;
 
-import com.sade.model.EmployeeEntity;
+import com.sade.rpm.model.EmployeeEntity;
 import com.sade.rpm.domain.Company;
 import com.sade.rpm.domain.Employee;
 import com.sade.rpm.domain.Project;
