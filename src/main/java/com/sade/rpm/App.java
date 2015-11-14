@@ -1,5 +1,6 @@
 package com.sade.rpm;
 
+import com.sade.db.FileDb;
 import com.sade.rpm.dao.RpmDao;
 import com.sade.rpm.domain.Company;
 import com.sade.rpm.domain.Employee;
@@ -19,7 +20,7 @@ public class App
     public static void main(String[] args) {
 
 
-        SadeRpmService service = new RpmService(new RpmDao());
+        SadeRpmService service = new RpmService(new RpmDao(new FileDb()));
 
         service.insertProject(getNewProject());
 
@@ -33,7 +34,6 @@ public class App
     private static Project getNewProject() {
         Project project = new Project();
 
-        project.setCompanyId(6546545);
         project.setProjectId(123123);
         project.setProjectName("Müşteri bilgi yönetimi");
 

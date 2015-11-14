@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Project implements Serializable {
     private Integer projectId;
-    private Integer companyId;
     private String projectName;
     private List<Employee> employeeList;
 
@@ -18,13 +17,6 @@ public class Project implements Serializable {
         this.projectId = projectId;
     }
 
-    public Integer getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
-    }
 
     public String getProjectName() {
         return projectName;
