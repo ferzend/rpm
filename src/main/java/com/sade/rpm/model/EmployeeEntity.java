@@ -8,7 +8,6 @@ import javax.persistence.Id;
 public class EmployeeEntity {
 
     @Id
-    @GeneratedValue
     private long employeeId;
     private String employeeName;
 

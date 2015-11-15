@@ -8,6 +8,10 @@ public class FromDomainToEntityConverter {
     public EmployeeEntity convert(Employee source) {
         EmployeeEntity target = new EmployeeEntity();
 
+        if (source.getEmployeeId() != null) {
+            target.setEmployeeId(source.getEmployeeId());
+        }
+
         target.setEmployeeName(source.getEmployeeName());
 
         return target;

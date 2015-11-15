@@ -49,7 +49,8 @@ public class App
 
     public static Employee getEmployee() {
         Employee employee = new Employee();
-        employee.setEmployeeName("erdas");
+        employee.setEmployeeId(1l);
+        employee.setEmployeeName("ferhat");
         return employee;
     }
 }

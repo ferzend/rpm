@@ -1,38 +1,41 @@
 package com.sade.rpm;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import com.sade.rpm.domain.Employee;
+import com.sade.rpm.model.EmployeeEntity;
+import com.sade.rpm.service.SadeRpmService;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
+
+public class AppTest
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+    static SadeRpmService rpmService;
+
+    @BeforeClass
+    public static void beforeClass() {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        rpmService = (SadeRpmService) context.getBean("rpmService");
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+
+    @Test
+    public void testApp() {
+
+
+        rpmService.insertEmployee(getEmployee());
+
+        for (EmployeeEntity employeeEntity : rpmService.getAll()) {
+            System.out.println(employeeEntity);
+        }
+
+
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    public static Employee getEmployee() {
+        Employee employee = new Employee();
+        employee.setEmployeeId(2l);
+        employee.setEmployeeName("ferhat");
+        return employee;
     }
 }

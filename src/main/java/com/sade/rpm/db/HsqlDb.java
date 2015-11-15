@@ -26,7 +26,10 @@ public class HsqlDb implements RpmDb {
     @Override
     public void insertEmployee(EmployeeEntity employee) {
 
-        em.persist(employee);
+       em.find(EmployeeEntity.class, employee.getEmployeeId());
+
+//        em.persist(employee);
+        em.merge(employee);
 
     }
 
